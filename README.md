@@ -1,9 +1,9 @@
 # Game-Library
 This is a simple "game engine"
 There will be such things as:
-- Events
-- Quiz
+- [x] Events (so far, only the lose is implemented)
+- [x] Quiz
 - Text games with maps
-- Player Structure Qualities
+- [x] Player Structure Qualities (so far only name, nick, age and native country)
 
 **There aren't 3D Games in the plan**
