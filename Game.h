@@ -2,9 +2,9 @@
 namespace Player
 {
 	std::string imie = "";
-	//std::string nick = "";
-	//unsigned short wiek = 0;
-	//enum NATIVECOUNTRY {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, NOR, SWE, null} kraj_pochodzenia = null;
+	std::string nick = "";
+	unsigned short wiek = 0;
+	enum NATIVECOUNTRY {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, NOR, SWE, null} kraj_pochodzenia = null;
 }
 namespace Game
 {
