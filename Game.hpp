@@ -1,8 +1,8 @@
 /**
 * @file Game.hpp
-* Made by Antoni Kiedos al. Programista-Cpp
+* Made by Antoni Kiedos (GitHub alias: Programista-Cpp)
 * This game engine was made accidentally because I want to do electronical version of polish quiz show "Milionerzy" and it was too much lines of code, so I bring it to the another file -- Game.hpp
-* Version: 1.0
+* Version: 0.1.0-alpha
 * Version name: "You lose this quiz!"
 */
 
