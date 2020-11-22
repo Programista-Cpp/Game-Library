@@ -16,7 +16,7 @@ namespace Player
 	std::string name	= "";
 	std::string nick	= "";
 	unsigned short age	= 0;
-	enum GENDER {MALE, FEMALE, null} gender = null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
+	enum GENDER {MALE, FEMALE, null} gender = null; // null is to initialise the enum. Without initialisation the std::cin >> does not work properly
 	enum NATIVECOUNTRY {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, null} native_country = null; // NATIVECOUNTRY is for language packages
 } // namespace Player
 namespace Game
