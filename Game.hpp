@@ -1,3 +1,15 @@
+/**
+* @file Game.hpp
+* Made by Antoni Kiedos al. Programista-Cpp
+* This game engine was made accidentally because I want to do electronical version of polish quiz show "Milionerzy" and it was too much lines of code, so I bring it to the another file -- Game.hpp
+* Version: 1.0
+* Version name: "You lose this quiz!"
+*/
+
+/**
+* TO DO: Check if there are the female verbs for "lose" in other languages
+* TO DO: Extend Question() to other languages
+*/
 #pragma once
 namespace Player
 {
@@ -5,11 +17,11 @@ namespace Player
 	std::string nick	= "";
 	unsigned short age	= 0;
 	enum GENDER {MALE, FEMALE, null} gender = null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
-	enum NATIVECOUNTRY {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, null} native_country = null;
-}
+	enum NATIVECOUNTRY {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, null} native_country = null; // NATIVECOUNTRY is for language packages
+} // namespace Player
 namespace Game
 {
-	namespace Events
+	namespace Events // This use language packages
 	{
 		void Lose() requires ((Player::native_country == GB) || (Player::native_country == USA) || (Player::native_country == CN))
 		{
@@ -60,7 +72,7 @@ namespace Game
 		{
 			std::cout << "Du forlorade...\n";
 		}
-	}
+	} // namespace Events
 	namespace Quiz
 	{
 		char corr_ans = '\0';
@@ -74,5 +86,5 @@ namespace Game
 			corr_ans = correct_answer;
 			std::cin >> user_ans;
 		}
-	}
-}
+	} // namespace Quiz
+} // namespace Game
