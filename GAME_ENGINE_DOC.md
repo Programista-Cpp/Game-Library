@@ -32,7 +32,9 @@
 # Game::
 ## Events::
 - ```C++
-    void Lose()``` -- checks what `native_country` is setted and couts "You lose" in given language
+    void Lose()
+```
+-- checks what `native_country` is setted and couts "You lose" in given language
 ## Quiz::
 - ```C++
     void Question(std::string q, std::string ans_A, std::string ans_B, std::string ans_C, std::string ans_D)
