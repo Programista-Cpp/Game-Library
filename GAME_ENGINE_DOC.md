@@ -33,12 +33,13 @@
 ## Events::
 - ```C++
     void Lose()
-```
+    ```
 -- checks what `native_country` is setted and couts "You lose" in given language
 ## Quiz::
 - ```C++
     void Question(std::string q, std::string ans_A, std::string ans_B, std::string ans_C, std::string ans_D)
-``` -- couts question and answers
+    ```
+-- couts question and answers
 
 ```C++
     Qestion word2 word3 word4 word5?
