@@ -42,7 +42,7 @@ checks what `native_country` is setted and couts "You lose" in given language
 couts question and answers
 
 ```C++
-    Qestion word2 word3 word4 word5?
+    Word1 word2 word3 word4 word5 ... wordN?
     Answers:
 
     A--ans_A    B--ans_B
