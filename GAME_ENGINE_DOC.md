@@ -51,7 +51,7 @@ couts question and answers
     There will be couted text after Game::Quiz::Question() call
 ```
 
-- `void Answer(char correct_answer)` -- this is shortcut for setting correct answer and checking it
+- `void Answer(char correct_answer)` -- this is shortcut for setting correct answer and cinning it
 
 # Example
 
