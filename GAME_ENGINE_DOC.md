@@ -33,12 +33,11 @@
 ## Events::
 - ```C++
     void Lose()
-    ```
 checks what `native_country` is setted and couts "You lose" in given language
 ## Quiz::
 - ```C++
     void Question(std::string q, std::string ans_A, std::string ans_B, std::string ans_C, std::string ans_D)
-    ```
+  ```
 couts question and answers
 
 ```C++
@@ -51,7 +50,9 @@ couts question and answers
     There will be couted text after Game::Quiz::Question() call
 ```
 
-- `void Answer(char correct_answer)` -- this is shortcut for setting correct answer and cinning it
+- ``` C++
+    void Answer(char correct_answer)
+this is shortcut for setting correct answer and cinning it
 
 # Example
 
