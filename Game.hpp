@@ -1,10 +1,10 @@
 /**
 * @file Game.hpp
-* Made by Antoni Kiedos (GitHub alias: Programista-Cpp)
+* Made by Antoni Kiedos (GitHub alias: ankiedos)
 * This game engine was made accidentally because I want to do electronical version of polish quiz show "Milionerzy" and it was too much lines of code, so I bring it to the another file -- Game.hpp
 * Version: 0.1.0-alpha
 * Version name: "You lose this quiz!"
-* You can contribute to this game engine: https://github.com/Programista-Cpp/Game-Library/pulls
+* You can contribute to this game engine: https://github.com/ankiedos/Game-Library/pulls
 */
 
 /**
@@ -80,7 +80,6 @@ namespace Game
 				std::cout << "Du forlorade...\n";
 			}
 		}
-	}
 	} // namespace Events
 	namespace Quiz
 	{
@@ -89,7 +88,7 @@ namespace Game
 		
 		/// User's answer (it do not have to be the same with corr_ans, of course)
 		char user_ans = '\0';
-		/// Cout this when you want to ask (there must be 4 answers)
+		/// Call this when you want to ask (there must be <=4 answers)
 		void Question(std::string q, std::string ans_A, std::string ans_B, std::string ans_C, std::string ans_D)
 		{
 			std::cout << q << "\nAnswers:\n\nA--" << ans_A << "\tB--" << ans_B << "\nC--" << ans_C << "\tD--" << ans_D << "\n\n";
