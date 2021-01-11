@@ -61,6 +61,5 @@ this is shortcut for setting correct answer and cinning it
     std::cout << "Hello, " << Player::name;
     Question("Do you like apples?", "Yes", "No", "So-so", "I hate apples!");
     Answer('A');
-    if(Game::Quiz::user_ans == 'B' || Game::Quiz::user_ans == 'C' || Game::Quiz::user_ans == 'D');
-    Lose();
+    if(Game::Quiz::user_ans == 'B' || Game::Quiz::user_ans == 'C' || Game::Quiz::user_ans == 'D') Lose();
 ```
