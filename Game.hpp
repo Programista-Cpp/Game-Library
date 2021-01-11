@@ -20,7 +20,7 @@ namespace Player
 	unsigned short age			= 0;
 	enum class GENDER {MALE, FEMALE, null} gender = GENDER::null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
 	// NATIVECOUNTRY is for language packages
-	enum class NATIVECOUNTRY { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, null } native_country = NATIVECOUNTRY::null;
+	enum class NATIVECOUNTRY { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR, null } native_country = NATIVECOUNTRY::null;
 } // namespace Player
 
 namespace Game
@@ -36,8 +36,8 @@ namespace Game
 			}
 			else if (Player::native_country == Player::NATIVECOUNTRY::PL)
 			{
-				if (Player::gender == Player::GENDER::FEMALE) std::cout << "Niestety przegralas...\n";
-				else std::cout << "Niestety przegrales...\n";
+				if (Player::gender == Player::GENDER::FEMALE) std::cout << "Przegralas...\n";
+				else std::cout << "Przegrales...\n";
 			}
 			else if ((Player::native_country == Player::NATIVECOUNTRY::MX) || (Player::native_country == Player::NATIVECOUNTRY::ES))
 			{
@@ -78,6 +78,10 @@ namespace Game
 			else if (Player::native_country == Player::NATIVECOUNTRY::SWE)
 			{
 				std::cout << "Du forlorade...\n";
+			}
+			else if (Player::native_country == Player::NATIVECOUNTRY::GR)
+			{
+				std::cout << "Echeis chasei ...\n";
 			}
 		}
 	} // namespace Events
