@@ -18,9 +18,9 @@ namespace Player
 	std::string name			= "";
 	std::string nick			= "";
 	unsigned short age			= 0;
-	enum GENDER {MALE, FEMALE, null} gender = GENDER::null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
+	enum class GENDER {MALE, FEMALE, null} gender = GENDER::null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
 	// NATIVECOUNTRY is for language packages
-	enum NATIVECOUNTRY { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, null } native_country = NATIVECOUNTRY::null;
+	enum class NATIVECOUNTRY { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, null } native_country = NATIVECOUNTRY::null;
 } // namespace Player
 
 namespace Game
@@ -36,7 +36,7 @@ namespace Game
 			}
 			else if (Player::native_country == Player::NATIVECOUNTRY::PL)
 			{
-				if (Player::gender == Player::FEMALE) std::cout << "Niestety przegralas...\n";
+				if (Player::gender == Player::GENDER::FEMALE) std::cout << "Niestety przegralas...\n";
 				else std::cout << "Niestety przegrales...\n";
 			}
 			else if ((Player::native_country == Player::NATIVECOUNTRY::MX) || (Player::native_country == Player::NATIVECOUNTRY::ES))
@@ -85,7 +85,7 @@ namespace Game
 	{
 		/// Correct answer
 		char corr_ans = '\0';
-		
+
 		/// User's answer (it do not have to be the same with corr_ans, of course)
 		char user_ans = '\0';
 		/// Call this when you want to ask (there must be <=4 answers)
