@@ -18,70 +18,70 @@ namespace Player
 	std::string name			= "";
 	std::string nick			= "";
 	unsigned short age			= 0;
-	enum class GENDER {MALE, FEMALE, null} gender = GENDER::null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
-	// NATIVECOUNTRY is for language packages
-	enum class NATIVECOUNTRY { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR, null } native_country = NATIVECOUNTRY::null;
+	enum GENDER {MALE, FEMALE, null} gender = GENDER::null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
 } // namespace Player
 
 namespace Game
 {
+	// Language packages
+	enum GAMELANG { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR, null } game_lang = GAMELANG::null;
 	namespace Events // This use language packages
 	{
 		// Call this if player lost
 		void Lose()
 		{
-			if ((Player::native_country == Player::NATIVECOUNTRY::GB) || (Player::native_country == Player::NATIVECOUNTRY::USA) || (Player::native_country == Player::NATIVECOUNTRY::CN))
+			if((game_lang == GAMELANG::GB) || (game_lang == GAMELANG::USA) || (game_lang == GAMELANG::CN))
 			{
 				std::cout << "You lose...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::PL)
+			else if(game_lang == GAMELANG::PL)
 			{
 				if (Player::gender == Player::GENDER::FEMALE) std::cout << "Przegralas...\n";
 				else std::cout << "Przegrales...\n";
 			}
-			else if ((Player::native_country == Player::NATIVECOUNTRY::MX) || (Player::native_country == Player::NATIVECOUNTRY::ES))
+			else if((game_lang == GAMELANG::MX) || (game_lang == GAMELANG::ES))
 			{
 				std::cout << "Perdiste...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::RU)
+			else if(game_lang == GAMELANG::RU)
 			{
 				std::cout << "Ty proigrala...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::GER)
+			else if(game_lang == GAMELANG::GER)
 			{
 				std::cout << "Du hast verloren...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::CZ)
+			else if(game_lang == GAMELANG::CZ)
 			{
 				std::cout << "Prohral jsi...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::HU)
+			else if(game_lang == GAMELANG::HU)
 			{
 				std::cout << "Vesztettel...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::JP)
+			else if(game_lang == GAMELANG::JP)
 			{
 				std::cout << "Anata ga maketa...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::FR)
+			else if(game_lang == GAMELANG::FR)
 			{
 				std::cout << "Tu as perdu...\n";
 			}
-			else if ((Player::native_country == Player::NATIVECOUNTRY::POR) || (Player::native_country == Player::NATIVECOUNTRY::BR))
+			else if((game_lang == GAMELANG::POR) || (game_lang == GAMELANG::BR))
 			{
 				std::cout << "Voce perdeu...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::NOR)
+			else if(game_lang == GAMELANG::NOR)
 			{
 				std::cout << "Du tapte...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::SWE)
+			else if(game_lang == GAMELANG::SWE)
 			{
 				std::cout << "Du forlorade...\n";
 			}
-			else if (Player::native_country == Player::NATIVECOUNTRY::GR)
+			else if(game_lang == GAMELANG::GR)
 			{
-				std::cout << "Echeis chasei ...\n";
+				std::cout << "Echeis chasei...\n";
 			}
 		}
 	} // namespace Events
@@ -97,7 +97,7 @@ namespace Game
 		{
 			std::cout << q << "\nAnswers:\n\nA--" << ans_A << "\tB--" << ans_B << "\nC--" << ans_C << "\tD--" << ans_D << "\n\n";
 		}
-		/// This is a shortcut for setting the correct answer and cinning this from user
+		/// This is a shortcut for setting the correct answer and cinning it from user
 		void Answer(char correct_answer)
 		{
 			corr_ans = correct_answer;
