@@ -1,8 +1,8 @@
 /**
 * @file Game.hpp
-* Made by Antoni Kiedos (GitHub alias: ankiedos)
+* Made by Antoni Kiedos (GitHub alias: ankiedos) and NikosNtigas (due to RODO, his real name and surname are not shared)
 * This game engine was made accidentally because I want to do electronical version of polish quiz show "Milionerzy" and it was too much lines of code, so I bring it to the another file -- Game.hpp
-* Version: 0.1.0-alpha
+* Version: 0.1.0-alpha+1
 * Version name: "You lose this quiz!"
 * You can contribute to this game engine: https://github.com/ankiedos/Game-Library/pulls
 */
