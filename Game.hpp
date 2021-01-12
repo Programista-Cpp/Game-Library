@@ -8,7 +8,7 @@
 */
 
 /**
-* TO DO: Check if there are the female verbs for "lose" in other languages
+* TO DO: Check if there are female verbs for "lose" in other languages
 * TO DO: Extend Question() to other languages
 */
 
@@ -25,6 +25,7 @@ namespace Game
 {
 	// Language packages
 	enum GAMELANG { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR, null } game_lang = GAMELANG::null;
+	
 	namespace Events // This use language packages
 	{
 		// Call this if player lost
@@ -85,13 +86,14 @@ namespace Game
 			}
 		}
 	} // namespace Events
+	
 	namespace Quiz
 	{
 		/// Correct answer
 		char corr_ans = '\0';
-
 		/// User's answer (it do not have to be the same with corr_ans, of course)
 		char user_ans = '\0';
+
 		/// Call this when you want to ask (there must be <=4 answers)
 		void Question(std::string q, std::string ans_A, std::string ans_B, std::string ans_C, std::string ans_D)
 		{
