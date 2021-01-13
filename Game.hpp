@@ -9,7 +9,7 @@
 
 /**
 * TO DO: Check if there are female verbs for "lose" in other languages
-* TO DO: Extend Question() to other languages
+* TO DO: Extend Question() to other languages (DONE: USA, GB, CN, PL)
 */
 
 #pragma once
@@ -25,6 +25,12 @@ namespace Game
 {
 	// Language packages
 	enum GAMELANG { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR, null } game_lang = GAMELANG::null;
+	
+	#ifdef _GLIBCXX_ARRAY
+		std::array<GAMELANG, 17> langs = {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR};
+	#else
+		GAMELANG langs[17]			   = {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR};
+	#endif
 	
 	namespace Events // This use language packages
 	{
@@ -97,7 +103,19 @@ namespace Game
 		/// Call this when you want to ask (there must be <=4 answers)
 		void Question(std::string q, std::string ans_A, std::string ans_B, std::string ans_C, std::string ans_D)
 		{
-			std::cout << q << "\nAnswers:\n\nA--" << ans_A << "\tB--" << ans_B << "\nC--" << ans_C << "\tD--" << ans_D << "\n\n";
+			if(Game::game_lang == Game::GAMELANG::GB || Game::game_lang == Game::GAMELANG::USA || Game::game_lang == GAMELANG::CN)
+			{
+				std::cout << q << "\nAnswers:\n\nA--" << ans_A << "\tB--" << ans_B << "\nC--" << ans_C << "\tD--" << ans_D << "\n\n";
+			}
+			else if(Game::game_lang == Game::GAMELANG::PL)
+			{
+				std::cout << q << "\nOdpowiedzi:\n\nA--" << ans_A << "\tB--" << ans_B << "\nC--" << ans_C << "\tD--" << ans_D << "\n\n";
+			}
+			else if(Game::game_lang == Game::GAMELANG::MX || Game::game_lang == Game::GAMMELANG::ES)
+			{
+				// TODO: Remove PLACEHOLDER with apropriate word
+				std::cout << q << "\n" << PLACEHOLDER << ":\n\nA--" << ans_A << "\tB--" << ans_B << "\nC--" << ans_C << "\tD--" << ans_D << "\n\n";
+			}
 		}
 		/// This is a shortcut for setting the correct answer and cinning it from user
 		void Answer(char correct_answer)
