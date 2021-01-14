@@ -6,4 +6,8 @@ There will be such things as:
 - Text games with maps
 - [x] Player Structure Qualities (so far only name, nick, age and native country)
 
-**There aren't 3D Games in the plan**
+**There aren't 3D Games in the plan :)**
+
+# For instructions how to use it, [check this](https://github.com/ankiedos/Console-Game-Engine/GAME_ENGiNE_DOC.md)
+# For License, [go here](https://github.com/ankiedos/Console-Game-Engine/LICENSE)
+# For behaviour rules, [clck this link](http://github.com/ankiedos/Console-Game-Engine/CODE_OF_CONDUCT.md)
