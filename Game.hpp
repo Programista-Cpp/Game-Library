@@ -4,7 +4,7 @@
 * This game engine was made accidentally because I want to do electronical version of polish quiz show "Milionerzy" and it was too much lines of code, so I bring it to the another file -- Game.hpp
 * Version: 0.1.0-alpha+1
 * Version name: "You lose this quiz!"
-* You can contribute to this game engine: https://github.com/ankiedos/Game-Library/pulls
+* I'd be happy, if you contribute to this game engine: https://github.com/ankiedos/Console-Game-Engine/pulls
 */
 
 /**
