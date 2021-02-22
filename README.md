@@ -9,5 +9,5 @@ There will be such things as:
 **There aren't 3D Games in the plan :)**
 
 # For instructions how to use it, [check this](https://github.com/ankiedos/Console-Game-Engine/GAME_ENGiNE_DOC.md)
-# For License, [go here](https://github.com/ankiedos/Console-Game-Engine/LICENSE)
-# For behaviour rules, [clck this link](http://github.com/ankiedos/Console-Game-Engine/CODE_OF_CONDUCT.md)
+# For License, [go here](https://github.com/ankiedos/Console-Game-Engine/blob/main/.github/LICENSE)
+# For behaviour rules, [clck this link](http://github.com/ankiedos/Console-Game-Engine/blob/main/.github/CODE_OF_CONDUCT.md)
