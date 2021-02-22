@@ -9,18 +9,18 @@
     - `FEMALE`;
     - `null`; (to initialise enum)
 
-- `Player::native_country`
-, type: `enum NATIVECOUNTRY`-- this is player's native country
-- `Player::NATIVECOUNTRY`, type:`enum` -- values are:
+# Game::
+- `Game::game_lang`, type: `enum Game::GAMELANG`-- this is player's native country
+- `Game::GAMELANG`, type:`enum` -- values are:
     - `PL` -- Poland;
     - `USA` -- The United States of America;
     - `GB` -- Great Britain;
-    - `RU` -- Russian Federation;
+    - `RU` -- Russia;
     - `HU` -- Hungary;
-    - `JP` -- The Japanese Empire;
+    - `JP` -- Japan;
     - `FR` -- France;
-    - `GER` -- Federal Republic of Germany;
-    - `CZ` -- The Czech Republic;
+    - `GER` -- Germany;
+    - `CZ` -- Czechia;
     - `ES` -- Spain;
     - `CN` -- Canada; 
     - `MX` -- Mexic;
@@ -28,11 +28,12 @@
     - `POR` -- Portugaly;
     - `NOR` -- Norway;
     - `SWE` -- Sweden;
+    - `GR` -- Greek;
     - `null` -- To initialise enum;
-# Game::
 ## Events::
 - ```C++
     void Lose()
+  ```
 checks what `native_country` is setted and couts "You lose" in given language
 ## Quiz::
 - ```C++
