@@ -1,4 +1,4 @@
-# Game-Library
+# Console-Game-Egine
 This is a simple "game engine"
 There will be such things as:
 - [x] Events (so far, only the lose is implemented)
