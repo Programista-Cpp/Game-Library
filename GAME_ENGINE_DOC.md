@@ -1,17 +1,17 @@
 # DOCS
 ## Namespace Player::
-- `Player::name`, type: `std::string`-- this is player's name
-- `Player::nick`, type: `std::string` -- this is player's nick
-- `Player::age`, type: `unsigned short` -- this is player's age
-- `Payer::gender`, type: `enum GENDER` -- this is player's gender
-- `Player::GENDER`, type: `enum` -- values are:
+- `name`, type: `std::string`-- this is player's name
+- `nick`, type: `std::string` -- this is player's nick
+- `age`, type: `unsigned short` -- this is player's age
+- `gender`, type: `enum GENDER` -- this is player's gender
+- `GENDER`, type: `enum` -- values are:
     - `MALE`;
     - `FEMALE`;
     - `null`; (to initialise enum)
 
 # Game::
-- `Game::game_lang`, type: `enum Game::GAMELANG`-- this is player's native country
-- `Game::GAMELANG`, type:`enum` -- values are:
+- `gamelang`, type: `enum GAMELANG`-- this is player's native country
+- `GAMELANG`, type:`enum` -- values are:
     - `PL` -- Poland;
     - `USA` -- The United States of America;
     - `GB` -- Great Britain;
@@ -34,10 +34,10 @@
 - ```C++
     void Lose()
   ```
-checks what `native_country` is setted and couts "You lose" in given language
+checks what `gamelang` is setted and couts "You lose" in given language
 ## Quiz::
 - ```C++
-    void Question(std::string q, std::string ans_A, std::string ans_B, std::string ans_C, std::string ans_D)
+    void Question(const std::string& q, const std::string& ans_A, const std::string& ans_B, const std::string& ans_C, const std::string& ans_D)
   ```
 couts question and answers
 
@@ -52,10 +52,10 @@ couts question and answers
 ```
 
 - ``` C++
-    void Answer(char correct_answer)
+    void Answer(const char& correct_answer)
+  ```
 this is shortcut for setting correct answer and cinning it
-
-# Example
+### Quiz usage example
 
 ```C++
     std::cin >> Player::name;
@@ -64,3 +64,31 @@ this is shortcut for setting correct answer and cinning it
     Answer('A');
     if(Game::Quiz::user_ans == 'B' || Game::Quiz::user_ans == 'C' || Game::Quiz::user_ans == 'D') Lose();
 ```
+## RPG::
+- `Person`, type: `struct` -- person structure
+  - predefined:
+    - `player`
+    - `tutor`
+- `Persons`, type: `struct` -- persons structure
+  - predefined:
+    - `characters`, initial value: {player, tutor}
+### Items::
+- `Item`, type: `struct` -- base struct for items
+  - `price`, type: `static const double` -- price of an item
+  - `quantity`, type: `size_t` -- quantity of items character has
+  - operators:
+  - `+=`
+  - `+`
+  - `-=`
+  - `-`
+  - `*=`
+  - `*`
+  - `/=`
+  - `/`
+
+# Modularity
+To use Player namespace, define `DEFINE_PLAYER`
+To use Game::Quiz namespace, define `DEFINE_QUIZ`
+To use Game::RPG namespace, define `DEFINE_RPG`
+To use Game::RPG::Items, define `DEFINE_ITEMS` and `DEFINE_RPG`
+To use Game::RPG::Person and Game::RPG::Persons structures, define `DEFINE_CHARACTERS` and `DEFINE_RPG`
