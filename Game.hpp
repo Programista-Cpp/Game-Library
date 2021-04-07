@@ -17,7 +17,7 @@
 #include<string>
 #include<map>
 #include<vector>
-#include<initalizer_list>
+#include<initializer_list>
 
 #ifdef DEFINE_PLAYER
 namespace Player
