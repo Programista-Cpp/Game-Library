@@ -25,13 +25,15 @@ namespace Player
 	std::string name			= "";
 	std::string nick			= "";
 	unsigned short age			= 0;
-	enum GENDER {null = 0, MALE, FEMALE} gender = GENDER::null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
+	enum class GENDER {null = 0, MALE, FEMALE};
+	GENDER gender = GENDER::null; // null is to initialise the enum. Without initialisation the std::cin >> doesn't work properly
 } // namespace Player
 #endif
 namespace Game
 {
 	// Language packages
-	enum GAMELANG { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR, null } game_lang = GAMELANG::null;
+	enum class GAMELANG { PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR, null };
+	GAMELANG game_lang = GAMELANG::null;
 	
 	#ifdef _GLIBCXX_ARRAY
 		std::array<GAMELANG, 17> langs = {PL, USA, GB, RU, HU, JP, FR, GER, CZ, ES, CN, MX, BR, POR, NOR, SWE, GR};
@@ -142,19 +144,19 @@ namespace Game
         {
             struct Item
             {
-                static const double price;
+                static double price;
                 size_t quantity = 0;
 
-                Item& operator +=(long long quantity) { this->quantity += quantity; return *this; }
-                Item& operator -=(long long quantity) { this->quantity -= quantity; return *this; }
-                Item& operator *=(long long quantity) { this->quantity *= quantity; return *this; }
-                Item& operator /=(long long quantity) { this->quantity /= quantity; return *this; }
-                Item& operator +(long long quantity) return Item(this->price, this->quantity + quantity);
-                Item& operator -(long long quantity) return Item(this->price, this->quantity - quantity);
-                Item& operator *(long long quantity) return Item(this->price, this->quantity * quantity);
-                Item& operator /(long long quantity) return Item(this->price, this->quantity / quantity);
+                Item& operator +=(long long quantity) { Item::quantity += quantity; return *this; }
+                Item& operator -=(long long quantity) { Item::quantity -= quantity; return *this; }
+                Item& operator *=(long long quantity) { Item::quantity *= quantity; return *this; }
+                Item& operator /=(long long quantity) { Item::quantity /= quantity; return *this; }
+                Item operator +(long long quantity) { return Item(Item::price, this->quantity + quantity); }
+                Item operator -(long long quantity) { return Item(Item::price, this->quantity - quantity); }
+                Item operator *(long long quantity) { return Item(Item::price, this->quantity * quantity); }
+                Item operator /(long long quantity) { return Item(Item::price, this->quantity / quantity); }
                 Item() = default;
-                explicit Item(const double& price, const size_t& quantity) { this->price = price; this->quantity = quantity; }
+                explicit Item(const double& price, const size_t& quantity) { Item::price = price; this->quantity = quantity; }
                 ~Item() = default;
             }; // struct Game::RPG::Items::Item
         } // namespace Game::RPG::Items
@@ -162,7 +164,7 @@ namespace Game
         #ifdef DEFINE_CHARACTERS
         struct Person
         {
-            void says(const std::string& what) std::cout << this->name << ": " << what << "\n";
+            void says(const std::string& what) { std::cout << this->name << ": " << what << "\n"; }
             std::string name;
 
             #ifndef DEFINE_PLAYER
@@ -172,34 +174,34 @@ namespace Game
                 Player::GENDER gender;
             #endif
 
-            std::map<std::string, Item> items;
-            friend Persons operator &(const Person& p1, const Person& p2) return Persons(p1, p2);
-            friend Persons operator &&(const Person& p1, const Person& p2) return Persons(p1, p2);
-            Items::Item& operator [](const std::string& key) return this->items[key];
+            std::map<std::string, Items::Item> items;
+            friend Persons operator &(const Person& p1, const Person& p2) { return Persons(std::initializer_list{p1, p2}); }
+            friend Persons operator &&(const Person& p1, const Person& p2) { return Persons(std::initializer_list{p1, p2}); }
+            Items::Item& operator [](const std::string& key) { return this->items[key]; }
 
             Person() = default;
 
             #ifndef DEFINE_PLAYER
                 explicit Person(const std::string& name, const GENDER& gender) { this->name = name; this->gender = gender; characters += this; }
-                explicit Person(std::string&& name) { this->name = std::move(name); this->gender = std::move(gender); }
+                explicit Person(std::string&& name, GENDER&& gender) { this->name = std::move(name); this->gender = std::move(gender); }
             #else
-                explicit Person(const std::string& name, const Player::GENDER& gender) { this->name = name; this->gender = gender; characters += this; }
-                explicit Person(std::string&& name, Player::GENDER&& gender) { this->name = std::move(name); this->gender = std::move(gender); characters += this; }
+                explicit Person(const std::string& name, const Player::GENDER& gender) { this->name = name; this->gender = gender; characters += *this; }
+                explicit Person(std::string&& name, Player::GENDER&& gender) { this->name = std::move(name); this->gender = std::move(gender); characters += *this; }
             #endif
 
-            explicit Person(const Person& other) { this->name = other.name; characters += this; }
+            explicit Person(const Person& other) { this->name = other.name; this->gender = other.gender; characters += *this; }
             explicit Person(Person&& other) { Person(std::move(other)); }
 
             #ifndef DEFINE_PLAYER
-                Person& operator =(const std::string& name, const GENDER& gender) { this = Person(name, gender); }
-                Person& operator =(std::string&& name, GENDER&& gender) { this = Person(name, gender); }
+                Person& operator =(const std::pair<std::string, GENDER>& name_gender) { *this = Person(name_gender.first, name_gender.second); }
+                Person& operator =(std::pair<std::string, GENDER>&& name_gender) { *this = Person(name_gender.first, name_gender.second); }
             #else
-                Person& operator =(const std::string& name, const Player::GENDER& gender) { this = Person(name, gender); }
-                Person& operator =(std::string&& name, Player::GENDER&& gender) { this = Person(name, gender); }
+                Person& operator =(const std::pair<std::string, Player::GENDER>& name_gender) { *this = Person(name_gender.first, name_gender.second); return *this; }
+                Person& operator =(std::pair<std::string, Player::GENDER>&& name_gender) { *this = Person(name_gender.first, name_gender.second); }
             #endif
 
-            Person& operator =(const Person& other) { this = Person(other); }
-            Person& operator =(Person&& other) { this = Person(other); }
+            Person& operator =(const Person& other) { *this = Person(other); }
+            Person& operator =(Person&& other) { *this = Person(other); }
             ~Person() = default;
         }; // struct Game::RPG::Person
         #ifdef DEFINE_PLAYER
@@ -213,8 +215,8 @@ namespace Game
             void say(const std::string& what)
             {
                 std::vector<std::string> people = std::vector<std::string>();
-                for(auto& i : this->people) people += i.name;
-                for(auto i = 0; i < people.size() - 1; i++) std::cout << people << " and ";
+                for(auto& i : this->people) people.push_back(i.name);
+                for(auto i = 0; i < people.size() - 1; i++) std::cout << people[i] << " and ";
                 std::cout << people[people.size() - 1] << ": " << what << "\n";
             }
             std::vector<Person> people;
@@ -223,17 +225,17 @@ namespace Game
             Persons& operator +=(Person&& p) { this->people.push_back(std::move(p)); return *this; }
 
             Persons() = default;
-            explicit Persons(const std::initializer_list<Person>& p) { for(auto& i : p) this->people.push_back(Person(i)); }
-            explicit Persons(std::initializer_list<Person>&& p) { for(auto& i : p) this->people.push_back(Person(i)); }
-            explicit Persons(const Persons& other) { for(auto& i : p) this->people = other.people; }
-            explicit Persons(Persons&& other) { for(auto& i : p) this->people = std::move(other.people); }
-            Persons& operator =(const std::initializer_list<Person>& p) { this = Persons(p); }
-            Persons& operator =(std::initializer_list<Person>&& p) { this = Persons(p); }
-            Persons& operator =(const Persons& other) { this = Persons(other); }
-            Persons& operator =(Persons&& other) { this = Persons(other); }
+            explicit Persons(const std::initializer_list<Person>& p) { for(auto& i : p) this->people.push_back(i); }
+            explicit Persons(std::initializer_list<Person>&& p) { for(auto& i : p) this->people.push_back(i); }
+            explicit Persons(const Persons& other) { this->people = other.people; }
+            explicit Persons(Persons&& other) {this->people = std::move(other.people); }
+            Persons& operator =(const std::initializer_list<Person>& p) { *this = Persons(p); }
+            Persons& operator =(std::initializer_list<Person>&& p) { *this = Persons(p); }
+            Persons& operator =(const Persons& other) { *this = Persons(other); }
+            Persons& operator =(Persons&& other) { *this = Persons(other); }
             ~Persons() = default;
         };
-        Persons characters = Persons({player, tutor});
+        Persons characters = Persons(std::initializer_list{player, tutor});
         #endif
     } // namespace Game::RPG
 #endif

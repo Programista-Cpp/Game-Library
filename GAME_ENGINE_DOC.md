@@ -74,7 +74,7 @@ this is shortcut for setting correct answer and cinning it
     - `characters`, initial value: {player, tutor}
 ### Items::
 - `Item`, type: `struct` -- base struct for items
-  - `price`, type: `static const double` -- price of an item
+  - `price`, type: `static double` -- price of an item
   - `quantity`, type: `size_t` -- quantity of items character has
   - operators:
   - `+=`
