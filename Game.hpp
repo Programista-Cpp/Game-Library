@@ -166,6 +166,7 @@ namespace Game
         {
             void says(const std::string& what) { std::cout << this->name << ": " << what << "\n"; }
             std::string name;
+			bool alive = true;
 
             #ifndef DEFINE_PLAYER
                 enum GENDER {null = 0, MALE, FEMALE};
@@ -176,7 +177,9 @@ namespace Game
 
             std::map<std::string, Items::Item> items;
             friend Persons operator &(const Person& p1, const Person& p2) { return Persons(std::initializer_list{p1, p2}); }
-            friend Persons operator &&(const Person& p1, const Person& p2) { return Persons(std::initializer_list{p1, p2}); }
+            friend bool operator &&(const Person& p1, const Person& p2) { return p1.alive && p2.alive; }
+			friend bool operator ||(const Person& p1, const Person& p2) { return p1.alive || p2.alive; }
+			friend bool operator !(const Person& p) { return !p.alive; }
             Items::Item& operator [](const std::string& key) { return this->items[key]; }
 
             Person() = default;
