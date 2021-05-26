@@ -10,5 +10,6 @@ There will be such things as:
 **There aren't 3D Games in the plan :)**
 
 # For instructions how to use it, [check this](https://github.com/ankiedos/Console-Game-Engine/blob/main/GAME_ENGINE_DOC.md)
-# For License, [go here](https://github.com/ankiedos/Console-Game-Engine/blob/main/.github/LICENSE)
+# For License, [go here](https://github.com/ankiedos/Console-Game-Engine/blob/main/.github/LICENSE.md)
+Note: I can't changed the license text, so I am writing it her: licensed under GPLv3 **OR HIGHER**
 # For behaviour rules, [clck this link](http://github.com/ankiedos/Console-Game-Engine/blob/main/.github/CODE_OF_CONDUCT.md)
